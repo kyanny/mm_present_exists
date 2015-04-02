@@ -2,6 +2,7 @@ require 'mongo_mapper'
 require 'logger'
 require 'benchmark/ips'
 require 'pp'
+require 'ffaker'
 
 # prepare MM
 MongoMapper.database = 'testing'
@@ -19,15 +20,16 @@ end
 class Book
   include MongoMapper::Document
   belongs_to :author
+  key "stuff", String
 end
 
 # prepare test data
 author = Author.create
 1000.times do |n|
   if rand > 0.66
-    author.books.create
+    author.books.create(stuff: Faker::Lorem.paragraphs(10).join)
   else
-    Book.create
+    Book.create(stuff: Faker::Lorem.paragraphs(10).join)
   end
 end
 
