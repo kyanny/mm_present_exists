@@ -4,20 +4,20 @@ $ ruby test.rb
 Indexes
 {"_id_"=>{"v"=>1, "key"=>{"_id"=>1}, "name"=>"_id_", "ns"=>"testing.books"}}
 ==> Query: author.books.present?
-D, [2015-04-02T14:12:00.979543 #44266] DEBUG -- : MONGODB (4.7ms) testing['books'].find({:author_id=>BSON::ObjectId('551ccf99421cdcacea000001')})
-D, [2015-04-02T14:12:00.980953 #44266] DEBUG -- : MONGODB [DEBUG] cursor.refresh() for cursor 3737977236351
+D, [2015-04-02T15:50:15.341858 #47225] DEBUG -- : MONGODB (5.2ms) testing['books'].find({:author_id=>BSON::ObjectId('551ce6a0421cdcb879000001')})
+D, [2015-04-02T15:50:15.343335 #47225] DEBUG -- : MONGODB [DEBUG] cursor.refresh() for cursor 3755309239733
 ==> Query: author.books.exists?
-D, [2015-04-02T14:12:00.996559 #44266] DEBUG -- : MONGODB (0.5ms) testing['books'].find({:author_id=>BSON::ObjectId('551ccf99421cdcacea000001')}, {:_id=>1}).limit(-1)
+D, [2015-04-02T15:50:15.360404 #47225] DEBUG -- : MONGODB (0.6ms) testing['books'].find({:author_id=>BSON::ObjectId('551ce6a0421cdcb879000001')}, {:_id=>1}).limit(-1)
 Calculating -------------------------------------
-            present?    19.067k i/100ms
-             exists?   190.000  i/100ms
+            present?     4.000  i/100ms
+             exists?   116.000  i/100ms
 -------------------------------------------------
-            present?    723.054k (± 6.5%) i/s -      3.604M
-             exists?      1.922k (± 7.9%) i/s -      9.690k
+            present?     46.880  (± 6.4%) i/s -    236.000
+             exists?      1.072k (±13.2%) i/s -      5.336k
 
 Comparison:
-            present?:   723053.5 i/s
-             exists?:     1921.7 i/s - 376.27x slower
+             exists?:     1072.1 i/s
+            present?:       46.9 i/s - 22.87x slower
 
 Indexes
 {"_id_"=>{"v"=>1, "key"=>{"_id"=>1}, "name"=>"_id_", "ns"=>"testing.books"},
@@ -27,13 +27,13 @@ Indexes
    "name"=>"author_id_1",
    "ns"=>"testing.books"}}
 Calculating -------------------------------------
-            present?    19.105k i/100ms
-             exists?   174.000  i/100ms
+            present?     4.000  i/100ms
+             exists?   106.000  i/100ms
 -------------------------------------------------
-            present?    717.115k (± 6.2%) i/s -      3.573M
-             exists?      1.835k (± 7.9%) i/s -      9.222k
+            present?     47.294  (± 8.5%) i/s -    236.000
+             exists?      1.090k (± 7.2%) i/s -      5.512k
 
 Comparison:
-            present?:   717115.0 i/s
-             exists?:     1834.9 i/s - 390.82x slower
+             exists?:     1089.7 i/s
+            present?:       47.3 i/s - 23.04x slower
 ```

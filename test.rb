@@ -46,8 +46,8 @@ author.books.exists?
 MongoMapper.connection.logger.level = 1
 # benchmarking
 Benchmark.ips do |x|
-  x.report('present?') { author.books.present? }
-  x.report('exists?') { author.books.exists? }
+  x.report('present?') { author.reload.books.present? }
+  x.report('exists?') { author.reload.books.exists? }
   x.compare!
 end
 
@@ -58,7 +58,7 @@ pp Book.collection.index_information
 
 # benchmarking again
 Benchmark.ips do |x|
-  x.report('present?') { author.books.present? }
-  x.report('exists?') { author.books.exists? }
+  x.report('present?') { author.reload.books.present? }
+  x.report('exists?') { author.reload.books.exists? }
   x.compare!
 end
